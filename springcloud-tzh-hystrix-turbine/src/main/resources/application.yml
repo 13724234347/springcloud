@@ -1,0 +1,33 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: springcloud-tzh-hystrix-turbine
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://user:123456@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+logging:
+  level:
+    com.itmuch.cloud.feign.UserFeignClient: DEBUG
+feign:
+  hystrix:
+    enabled: true # 开启Feign熔断
+  httpclient:
+    enabled: true
+management: # 检查health需要配置
+  endpoint:
+    health:
+      show-details: always
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000
+#turbine:
+#  app-config: eureka-discovery-ribbon, eureka-discovery-feign
+#  aggregator:
+#    cluster-config: default
+#  cluster-name-expression: new String("default")
+#  #更改turbine连接的默认uri ,默认为actuator/hystrix.stream
+#  instanceUrlSuffix: hystrix.stream

@@ -1,0 +1,13 @@
+server:
+  port: 7900
+spring:
+  application:
+    name: springcloud-tzh-ribbon-with-hystrix
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone: http://user:123456@localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
