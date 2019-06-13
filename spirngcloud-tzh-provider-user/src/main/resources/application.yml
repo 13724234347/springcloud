@@ -1,32 +1,51 @@
+#设置访问端口
 server:
-  port: 7901
+  port: 7900
 spring:
+  #jpa配置
   jpa:
+    #启动时是否要生成ddl语句 false代表不生成,因为我们自己写了ddl语句
     generate-ddl: false
+    #是否打印sql语句到控制台 true代表打印
     show-sql: true
+    #因为jpa是依赖hibernate的,所以我们需要对hibernate进行配置
     hibernate:
+      #启动时不做ddl语句的处理
       ddl-auto: none
+  #配置数据源
   datasource:
+    #我这里是使用的h2数据库,这里可以使用
     platform: h2
+    #建表语句
     schema: classpath:schema.sql
+    #数据
     data: classpath:data.sql
+  #更改eureka管理界面的Application的名称(以大写形式显示)
   application:
-    name: springcloud-tzh-user
+    name: springcloud-tzh-user #建议全部使用小写
+#日志配置
 logging:
   level:
+    #根日志级别
     root: INFO
+    #hibernate的日志级别
     org.hibernate: INFO
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
     org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
     com.itmuch: DEBUG
+#注册服务到eureka配置
 eureka:
   client:
+    #打开健康检查
     healthcheck:
       enabled: true
     service-url:
+      #我的eureka需要认证,所以我的路径有改变,不需要认证eureka的路径为：http://localhost:8761/eureka/
       defaultZone: http://user:123456@localhost:8761/eureka/
+  #更改eureka管理界面的Status属性名称,默认是电脑主机名+应用名称(spring.application.name)+端口
   instance:
     prefer-ip-address: true
+    #自定义eureka管理界面的Status属性名称(根据自己的业务自定义)
     instance-id: ${spring.application.name}:${server.port}
     metadata-map:
       zone: ABC      # eureka可以理解的元数据

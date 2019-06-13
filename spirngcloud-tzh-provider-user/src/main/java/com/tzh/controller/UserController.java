@@ -4,6 +4,7 @@ import com.tzh.entity.User;
 import com.tzh.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,8 +13,12 @@ import java.util.List;
 @RestController
 public class UserController {
 
+  @Value("${spring.application.name}")
+  private String application;
+
   @Autowired
   private UserRepository userRepository;
+
   
   @GetMapping("/user/{id}")
   public User findById(@PathVariable Long id) {
@@ -29,4 +34,5 @@ public class UserController {
   public User postUser(@RequestBody User user){
    return  user;
   }
+
 }
