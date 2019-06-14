@@ -11,9 +11,11 @@ eureka:
       defaultZone: http://user:123456@localhost:8761/eureka/
   instance:
     prefer-ip-address: true
+#只请求某一个服务端,只访问localhost:7901
 springcloud-tzh-user: # 提供者yml中的application: name: springcloud-tzh-user
   ribbon:
     listOfServers: localhost:7901
+#有eureka和ribbon,false将它禁止掉eureka,不适用eureka单独使用ribbon
 ribbon:
   eureka:
     enabled: false

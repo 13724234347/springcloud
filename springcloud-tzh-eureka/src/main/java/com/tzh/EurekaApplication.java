@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 
-
+//表示eureka服务
 @EnableEurekaServer
 @SpringBootApplication(exclude={
         DataSourceAutoConfiguration.class,

@@ -10,5 +10,5 @@ public class Configuration2 {
   @Bean
   public BasicAuthRequestInterceptor basicAuthRequestInterceptor() {
     return new BasicAuthRequestInterceptor("user", "123456");
-  } 
+  }
 }

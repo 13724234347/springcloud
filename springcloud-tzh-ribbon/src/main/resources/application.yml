@@ -11,6 +11,10 @@ eureka:
       defaultZone: http://user:123456@localhost:8761/eureka/
   instance:
     prefer-ip-address: true
+#这里的配置是设置客户端负载均衡规则(随机机制,轮询机制,响应时间加权机制)
 springcloud-tzh-user: # 提供者yml中的application: name: springcloud-tzh-user
   ribbon:
+    #com.netflix.loadbalancer.RoundRobinRule 轮询机制
+    #com.netflix.loadbalancer.RandomRule 随机机制
+    #com.netflix.loadbalancer.WeightedResponseTimeRule 响应时间加权机制
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule

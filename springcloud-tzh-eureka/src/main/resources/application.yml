@@ -6,8 +6,10 @@ spring:
     user:
       name: user
       password: 123456
+#eureka服务的端口
 server:
   port: 8761
+#一个eureka服务本身里面也是有一个eureka链接的
 eureka:
   client:
     #由于该应用为注册中心,所以设置为false,代表不向注册中心注册自己
